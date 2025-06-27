@@ -16,4 +16,8 @@ public class SellerDao {
     public Optional<Seller> findById(int id){
         return sellerRepository.findById(id);
     }
+
+    public Seller save(Seller s){
+        return sellerRepository.save(s);
+    }
 }
