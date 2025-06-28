@@ -16,4 +16,30 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
         rs.setMessage("Resource not found");
         return new ResponseEntity<>(rs, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(InvalidEmailException.class)
+    public ResponseEntity<ResponseStructure<String>> handleInvalidEmailException() {
+        ResponseStructure<String> rs = new ResponseStructure<>();
+        rs.setStatusCode(HttpStatus.NOT_FOUND.value());
+        rs.setMessage("Invalid Email");
+        return new ResponseEntity<>(rs, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(InvalidUsernameException.class)
+    public ResponseEntity<ResponseStructure<String>> handleInvalidUsernameException() {
+        ResponseStructure<String> rs = new ResponseStructure<>();
+        rs.setStatusCode(HttpStatus.NOT_FOUND.value());
+        rs.setMessage("Invalid Email");
+        return new ResponseEntity<>(rs, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(InvalidDetailsException.class)
+    public ResponseEntity<ResponseStructure<String>> handleInvalidDetailsException() {
+        ResponseStructure<String> rs = new ResponseStructure<>();
+        rs.setStatusCode(HttpStatus.NOT_FOUND.value());
+        rs.setMessage("Credential does not meet the critiria");
+        return new ResponseEntity<>(rs, HttpStatus.CONFLICT);
+    }
+
+
 }
