@@ -1,5 +1,6 @@
 package com.ecommerce.ecommerce.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,10 +14,11 @@ import com.ecommerce.ecommerce.service.UserService;
 @RequestMapping("/user")
 @RestController
 public class UserController {
-    private UserService userService;
-    
-    @PostMapping
-     public ResponseEntity<ResponseStructure<Users>> save(@RequestBody Users user) {
-        return userService.save(user);
-     }
+   @Autowired
+   private UserService userService;
+
+   @PostMapping
+   public ResponseEntity<ResponseStructure<Users>> save(@RequestBody Users user) {
+      return userService.save(user);
+   }
 }

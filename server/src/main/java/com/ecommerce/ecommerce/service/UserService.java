@@ -30,7 +30,7 @@ public class UserService {
 
         if (user.getUsername().trim().length() >= 5 && user.getPassword().trim().length() >= 8) {
             ResponseStructure<Users> rs = new ResponseStructure<>();
-            rs.setData(user);
+            rs.setData(usersDao.save(user));
             rs.setMessage("Success");
             rs.setStatusCode(HttpStatus.ACCEPTED.value());
             return new ResponseEntity<>(rs, HttpStatus.ACCEPTED);
