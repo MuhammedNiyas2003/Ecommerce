@@ -21,14 +21,16 @@ public class CartService {
     @Autowired
     private UsersDao usersDao;
 
-    public ResponseEntity<ResponseStructure<Cart>> handleCart(Cart c) {
-        Optional<Cart> op = cartDao.findByUserId(c.getCustomer().getId());
+    public ResponseEntity<ResponseStructure<Cart>> handleCart(Users user) {
+        Cart c = new Cart();
+        c.setCustomer(user);
+        Optional<Cart> op = cartDao.findByUserId(user.getId());
         ResponseStructure<Cart> rs = new ResponseStructure<>();
         if (op.isPresent()) {
             rs.setData(op.get());
         } else {
-            Optional<Users> user = usersDao.findById(c.getCustomer().getId());
-            c.setCustomer(user.get());
+            Optional<Users> usr = usersDao.findById(user.getId());
+            c.setCustomer(usr.get());
             rs.setData(cartDao.save(c));
         }
         rs.setMessage("Success");
