@@ -1,10 +1,8 @@
 package com.ecommerce.ecommerce.dao;
 
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.ecommerce.ecommerce.model.Seller;
 import com.ecommerce.ecommerce.repository.SellerRepository;
 
@@ -16,7 +14,6 @@ public class SellerDao {
     public Optional<Seller> findById(int id){
         return sellerRepository.findById(id);
     }
-
     public Seller save(Seller s){
         return sellerRepository.save(s);
     }
