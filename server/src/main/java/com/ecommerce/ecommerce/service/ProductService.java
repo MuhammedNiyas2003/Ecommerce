@@ -1,5 +1,6 @@
 package com.ecommerce.ecommerce.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,19 @@ public class ProductService {
             rs.setStatusCode(HttpStatus.ACCEPTED.value());
             rs.setMessage("Success");
             return new ResponseEntity<>(rs, HttpStatus.ACCEPTED);
+        } else {
+            throw new ResourseNotFoundException();
+        }
+    }
+
+    public ResponseEntity<ResponseStructure<List<Product>>> findBySellerId(Integer id){
+        List<Product> li = productDao.findBySelerId(id);
+        if(!li.isEmpty()){
+                ResponseStructure<List<Product>> rs = new ResponseStructure<>();
+                rs.setData(li);
+                rs.setMessage("Success");
+                rs.setStatusCode(HttpStatus.FOUND.value());
+                return new ResponseEntity<>(rs,HttpStatus.FOUND);
         } else {
             throw new ResourseNotFoundException();
         }

@@ -1,5 +1,7 @@
 package com.ecommerce.ecommerce.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,10 @@ public class ProductController {
     @PostMapping("/product")
     public ResponseEntity<ResponseStructure<Product>> save(@RequestBody Product product , @PathVariable int sellerId){
         return  productService.save(product, sellerId);
+    }
+
+    public ResponseEntity<ResponseStructure<List<Product>>> findBySellerId(@PathVariable Integer id){
+        return productService.findBySellerId(id);
     }
 
 }
