@@ -1,5 +1,9 @@
 import React from "react";
 import ProductsContainer from "./components/customer/Products/index.tsx";
+import Navbar from "./components/customer/nav/index.tsx";
+const handleLogout = () => {
+  console.log("Logged out");
+};
 
 const dummyProducts = [
   {
@@ -26,7 +30,12 @@ const dummyProducts = [
 ];
 
 const App: React.FC = () => {
-  return <ProductsContainer products={dummyProducts} />;
+  return (
+    <>
+      <Navbar name="Niyas" onLogout={handleLogout} />
+      <ProductsContainer products={dummyProducts} />
+    </>
+  );
 };
 
 export default App;
