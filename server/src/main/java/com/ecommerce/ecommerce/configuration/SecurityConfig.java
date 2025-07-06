@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 
@@ -20,6 +21,8 @@ public class SecurityConfig {
              //configuring that whenever we are requesting it should as for authorization
             .httpBasic(Customizer.withDefaults())
              //making the configuration for accessing api request 
+            .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+             //making the session new for each request 
             .build();
     }
 
