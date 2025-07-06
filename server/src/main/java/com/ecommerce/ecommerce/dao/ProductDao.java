@@ -1,4 +1,5 @@
 package com.ecommerce.ecommerce.dao;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,11 @@ public class ProductDao {
     @Autowired
     private ProductRepository productRepository;
 
-    public Product save(Product p){
+    public Product save(Product p) {
         return productRepository.save(p);
     }
-    public List<Product> findBySelerId(Integer id){
+
+    public List<Product> findBySelerId(Integer id) {
         return productRepository.findBySellerId(id);
     }
 }

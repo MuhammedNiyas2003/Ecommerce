@@ -20,12 +20,14 @@ import com.ecommerce.ecommerce.service.ProductService;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
     @PostMapping("/new")
-    public ResponseEntity<ResponseStructure<Product>> save(@RequestBody Product product , @PathVariable int sellerId){
-        return  productService.save(product, sellerId);
+    public ResponseEntity<ResponseStructure<Product>> save(@RequestBody Product product, @PathVariable int sellerId) {
+        return productService.save(product, sellerId);
     }
+
     @GetMapping("/get")
-    public ResponseEntity<ResponseStructure<List<Product>>> findBySellerId(@PathVariable Integer id){
+    public ResponseEntity<ResponseStructure<List<Product>>> findBySellerId(@PathVariable Integer id) {
         return productService.findBySellerId(id);
     }
 

@@ -9,7 +9,8 @@ import org.springframework.data.jpa.repository.QueryHints;
 import com.ecommerce.ecommerce.model.Product;
 
 import jakarta.persistence.QueryHint;
-public interface ProductRepository extends JpaRepository<Product,Integer> {
+
+public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("select p from Product p where p.seller.id = ?1")
     @QueryHints(@QueryHint(name = "org.hibernate.cacheable", value = "true"))
     public List<Product> findBySellerId(Integer id);

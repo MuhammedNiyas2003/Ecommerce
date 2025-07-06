@@ -1,4 +1,5 @@
 package com.ecommerce.ecommerce.model;
+
 import java.util.List;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -18,10 +19,10 @@ import lombok.Data;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Product {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productId;
     @JoinColumn(nullable = false)
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Seller seller;
     private String productName;
     @Column(nullable = false)
